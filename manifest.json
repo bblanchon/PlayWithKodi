@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "Play with Kodi",
+	"version": "0.1",
+	"description": "Allow to play video on a page with Kodi (formerly XBMC)",
+	"author": "Benoit BLANCHON",
+	"icons": {
+		"16": "icon16.png",
+		"32": "icon32.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"options_page": "options.html",
+	"permissions": [
+		"storage",
+		"http://*/jsonrpc",
+		"https://*/jsonrpc"
+	]
+}
