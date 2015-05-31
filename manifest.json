@@ -11,6 +11,24 @@
 		"128": "icon128.png"
 	},
 	"options_page": "options.html",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["contentScript.js"]
+		}
+	],
+	"page_action": {
+		"default_icon": {
+			"19": "icon19.png",
+			"38": "icon38.png"
+		},
+		"default_title": "Play with Kodi",
+		"default_popup": "popup.html"
+	},
 	"permissions": [
 		"storage",
 		"http://*/jsonrpc",
