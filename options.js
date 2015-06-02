@@ -12,34 +12,12 @@ function onSave() {
 	});
 }
 
-function onTest() {	
-	var request = new XMLHttpRequest();
-	var url = elements.url.value + "/jsonrpc";
-	var params = {
-		jsonrpc: "2.0",
-		method: "Application.GetProperties",
-		params: {
-			properties: ["name", "version"]
-		}, 
-		id: 1
-	};
-
+function onTest() {
 	elements.status.innerText = "Testing, please wait..."
-	request = new XMLHttpRequest();
-	request.onreadystatechange = function() {
-		if (request.readyState == 4) {
-     		if(request.status == 200) {
-     			var response = JSON.parse(request.responseText);
-				elements.status.innerText = "Successfully connected to " + response.result.name + " " + response.result.version.major + "." + response.result.version.minor;
-     		}
-			else {
-				elements.status.innerText = "ERROR :-(";
-			}
-		}
-	};
-	request.open("POST", url, true);
-	request.setRequestHeader("Content-type", "application/json");	
-	request.send(JSON.stringify(params));
+	var kodi = new Kodi(elements.url.value, elements.username.value, elements.password.value);
+	kodi.getVersion(function(version){
+		elements.status.innerText = version ? "Successfully connected to " + version : "ERROR :-(";
+	});
 }
 
 
