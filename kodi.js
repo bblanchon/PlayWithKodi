@@ -20,4 +20,10 @@ function Kodi(url, username, password) {
 			callback(response && response.name + " " +response.version.major + "." + response.version.minor);
 		});		
 	}
+
+	this.play = function(url) {
+		performRequest("Player.Open", {"item":{"file":url}}, function(response) {
+			alert(response);
+		});
+	}
 }
