@@ -4,15 +4,18 @@
 	<title>Play with Kodi</title>
 	<script src="popup.js"></script>
 	<script src="kodi.js"></script>
+	<link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
 	<h1>Play with Kodi</h1>
+	Found on this page:
 	<ul id="videos"></ul>
-
 	<hr>
-	<div>
 	Or enter a video URL:
 	<input type="text" id="url"><input type="button" id="play" value="Play">
+	</div>
+	<div id="status-overlay" class="overlay hidden">
+		<div id="status-content">???</div>
 	</div>
 </body>
 </html>

@@ -1,0 +1,23 @@
+.overlay
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 0.75;
+	display: table;
+}
+
+.overlay > div 
+{
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.hidden 
+{
+	display: none;
+}

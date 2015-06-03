@@ -21,9 +21,9 @@ function Kodi(url, username, password) {
 		});		
 	}
 
-	this.play = function(url) {
+	this.play = function(url, callback) {
 		performRequest("Player.Open", {"item":{"file":url}}, function(response) {
-			alert(response);
+			if (callback) callback(response);
 		});
 	}
 }
