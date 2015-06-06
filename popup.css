@@ -1,23 +1,31 @@
-.overlay
+#status
 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: white;
-	opacity: 0.75;
-	display: table;
-}
-
-.overlay > div 
-{
-	text-align: center;
-	vertical-align: middle;
-	display: table-cell;
-}
-
-.hidden 
-{
 	display: none;
+	opacity: 0.9;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+}
+
+#status.working 
+{
+	display: block;
+	background-image: url(img/spinner64.gif);
+}
+
+#status.success 
+{
+	display: block;
+	background-image: url(img/ok64.png);
+}
+
+#status.failure 
+{
+	display: block;
+	background-image: url(img/error64.png);
 }

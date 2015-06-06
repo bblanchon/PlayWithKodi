@@ -5,14 +5,33 @@ storageArea.get(["url","username","password"], function(items) {
 	kodi = new Kodi(items.url, items.username, items.password);
 });
 
+function onPlaySucceed() {
+	elements.statusContent.innerHTML = "<img src='img/spinner64.gif'>";
+	window.setTimeout(function() {
+			elements.statusOverlay.classList.add("hidden");
+		}, 5000);
+}
+
+function onPlaySucceed() {
+	elements.status.className = "success";
+	window.setTimeout(function() {
+			elements.status.className = "";
+		}, 500);
+}
+
+function onPlayFailed() {
+	elements.status.className = "failure";
+	window.setTimeout(function() {
+			elements.status.className = "";
+		}, 2000);
+}
+
 function play(url) {
+	elements.status.className = "working";
 	kodi.play(url, function(response) {
-			elements.statusContent.innerHTML = response;
-			elements.statusOverlay.classList.remove("hidden");
-			window.setTimeout(function() {
-					elements.statusOverlay.classList.add("hidden");
-				}, 5000);
-		});
+		if (response == "OK") onPlaySucceed();
+		else onPlayFailed();
+	});
 }
 
 function onVideoLinkClick(event) {
@@ -40,8 +59,7 @@ function setVideos(videos) {
 function onLoad() {
 	elements = {
 		play: document.getElementById("play"),
-		statusContent: document.getElementById("status-content"),
-		statusOverlay: document.getElementById("status-overlay"),
+		status: document.getElementById("status"),
 		url: document.getElementById("url")
 	};
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
