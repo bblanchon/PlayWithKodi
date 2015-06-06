@@ -16,6 +16,7 @@ function onPlaySucceed() {
 	elements.status.className = "success";
 	window.setTimeout(function() {
 			elements.status.className = "";
+			window.close();
 		}, 500);
 }
 

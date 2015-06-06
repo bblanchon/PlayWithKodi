@@ -5,10 +5,10 @@
 	"description": "Allow to play video on a page with Kodi (formerly XBMC)",
 	"author": "Benoit BLANCHON",
 	"icons": {
-		"16": "icon16.png",
-		"32": "icon32.png",
-		"48": "icon48.png",
-		"128": "icon128.png"
+		"16": "img/icon16.png",
+		"32": "img/icon32.png",
+		"48": "img/icon48.png",
+		"128": "img/icon128.png"
 	},
 	"options_page": "options.html",
 	"background": {
@@ -23,8 +23,8 @@
 	],
 	"page_action": {
 		"default_icon": {
-			"19": "icon19.png",
-			"38": "icon38.png"
+			"19": "img/icon19.png",
+			"38": "img/icon38.png"
 		},
 		"default_title": "Play with Kodi",
 		"default_popup": "popup.html"
