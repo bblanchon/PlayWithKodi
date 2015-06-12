@@ -3,21 +3,24 @@ chrome.runtime.sendMessage("show_page_action");
 var youtubeRegex = /https:\/\/www\.youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9]+)/;
 var youtubePluginUrl = "plugin://plugin.video.youtube/?action=play_video&videoid=$1";
 
-function findYoutubeVideosInLocation(result) {
-	var url1 = document.location.href;
-	var url2 = url1.replace(youtubeRegex, youtubePluginUrl)
-	if (url1 != url2) result.push(url2);
-}
+function findVideosInUrls(urls, videos) {
+	for(var i=0;i<urls.length; i++) {
+		var url = urls[i];
 
-function findYoutubeVideosInIframes(result) {
-	var iframes = document.getElementsByTagName("iframe");
-	for(var i=0; i<iframes.length; i++) {
-		var url1 = iframes[i].src;
-		var url2 = url1.replace(youtubeRegex, youtubePluginUrl)
-		if (url1 != url2) result.push(url2);
+		var youtubeVideoUrl = url.replace(youtubeRegex, youtubePluginUrl)
+		if (url != youtubeVideoUrl) videos.push(youtubeVideoUrl);
 	}
 }
 
+function findUrlsInPage(videos) {
+	videos.push(document.location.href);
+
+	iframes = document.getElementsByTagName("iframe");
+	for(var i=0; i<iframes.length; i++) videos.push(iframes[i].src);
+	
+	anchors = document.getElementsByTagName("a");
+	for(var j=0; j<anchors.length; j++) videos.push(anchors[j].href);
+}
 
 function isBlobUrl(url) {
 	return url.indexOf("blob:") == 0;
@@ -40,10 +43,11 @@ function findHtml5Videos(result) {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request == "get_videos") {
-		var result = [];
-		findHtml5Videos(result);
-		findYoutubeVideosInLocation(result);
-		findYoutubeVideosInIframes(result);
-		sendResponse(result);
+		var videos = [];
+		var urls = [];
+		findHtml5Videos(videos);
+		findUrlsInPage(urls);
+		findVideosInUrls(urls, videos);
+		sendResponse(videos);
 	}
 });
