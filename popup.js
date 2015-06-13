@@ -43,14 +43,14 @@ function onPlayUrlClick() {
 	play(elements.url.value);
 }
 
-function setVideos(videos) {
+function onVideoListReceived(videos) {
 	var list = document.getElementById("videos");
 
 	for(var i=0; i<videos.length; i++) {
 		var item = document.createElement("li");
 		var anchor = document.createElement("a");
-		anchor.href = videos[i];
-		anchor.innerText = videos[i];
+		anchor.href = videos[i].url;
+		anchor.innerText = videos[i].title;
 		anchor.addEventListener("click", onVideoLinkClick);
 		item.appendChild(anchor)
 		list.appendChild(item);
@@ -64,7 +64,7 @@ function onLoad() {
 		url: document.getElementById("url")
 	};
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id,"get_videos", setVideos);
+        chrome.tabs.sendMessage(tabs[0].id,"get_videos", onVideoListReceived);
     });
     elements.play.addEventListener("click", onPlayUrlClick);
 }
