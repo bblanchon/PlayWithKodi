@@ -46,4 +46,14 @@ body {
   	white-space: nowrap;
 	overflow: hidden;
   	text-overflow: ellipsis;
+  	padding-left: 20px;
+  	background-repeat: no-repeat;
+}
+
+#videos li.youtube {
+	background-image: url(img/youtube16.png);
+}
+
+#videos li.html5 {
+	background-image: url(img/html16.png);
 }

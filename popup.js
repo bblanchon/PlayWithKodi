@@ -48,10 +48,11 @@ function onVideoListReceived(videos) {
 
 	for(var i=0; i<videos.length; i++) {
 		var item = document.createElement("li");
+		item.className = videos[i].type;
 		var anchor = document.createElement("a");
 		anchor.href = videos[i].url;
 		anchor.innerText = videos[i].title;
-		anchor.addEventListener("click", onVideoLinkClick);
+		anchor.addEventListener("click", onVideoLinkClick);	
 		item.appendChild(anchor)
 		list.appendChild(item);
 	}
