@@ -1,3 +1,7 @@
+body {
+	max-width: 500px;
+}
+
 #status
 {
 	position: absolute;
@@ -28,4 +32,18 @@
 {
 	display: block;
 	background-image: url(img/error64.png);
+}
+
+#videos {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#videos li {
+	margin-bottom: 5px;
+	max-width: 250px;
+  	white-space: nowrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
 }

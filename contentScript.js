@@ -46,7 +46,7 @@ function findVideos()
 	}
 
 	function detectYoutubeVideos() {
-		var youtubeRegex = /https:\/\/www\.youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9]+)/;
+		var youtubeRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9]+)/;
 
 		for (var key in _videos) {
 			var video = _videos[key];
