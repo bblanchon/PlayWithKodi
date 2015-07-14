@@ -1,5 +1,3 @@
-chrome.runtime.sendMessage("show_page_action");
-
 function findVideos() 
 {
 	var _videos = {}
@@ -83,4 +81,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		var videos = findVideos();
 		sendResponse(videos);
 	}
+});
+
+chrome.runtime.sendMessage({
+	"action": "set_videos",
+	"videos": findVideos() 
 });
