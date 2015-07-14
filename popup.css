@@ -57,3 +57,8 @@ body {
 #videos li.html5 {
 	background-image: url(img/html16.png);
 }
+
+#videos li.quicktime {
+	background-image: url(img/quicktime16.png);
+}
+

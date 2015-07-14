@@ -31,6 +31,17 @@ function findVideos()
 		}
 	}
 
+	function findQuicktimeVideos() {		
+		var qtsrcs = document.querySelectorAll("object>param[name='qtsrc']");
+		for(var i=0; i<qtsrcs.length; i++) addVideo(qtsrcs[i].value, qtsrcs[i].value, "quicktime");
+
+		var embeds = document.querySelectorAll("embed[qtsrc]");
+		for(var j=0; j<embeds.length; j++) {
+			var url = embeds[j].getAttribute('qtsrc')
+			addVideo(url, url, "quicktime");
+		}
+	}
+
 	function isBlobUrl(url) {
 		return url.indexOf("blob:") == 0;
 	}
@@ -63,6 +74,7 @@ function findVideos()
 	findCandidateUrls();
 	detectYoutubeVideos();
 	findHtml5Videos();
+	findQuicktimeVideos();
 	return getConfirmedVideos();
 }
 
