@@ -46,7 +46,8 @@ function onVideoListReceived(videos) {
     anchor.href = videos[i].url;
     anchor.innerText = videos[i].title;
     anchor.addEventListener("click", onVideoLinkClick);
-    item.appendChild(anchor) list.appendChild(item);
+    item.appendChild(anchor);
+    list.appendChild(item);
   }
 }
 
